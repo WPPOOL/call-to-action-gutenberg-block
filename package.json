@@ -1,0 +1,35 @@
+{
+  "name": "cta-gutenberg",
+  "version": "1.0.0",
+  "description": "Call to action Gutenberg blocks with impressive design and functionalities",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch"
+  },
+  "keywords": [
+    "gutenberg",
+    "wordpress",
+    "cta-gutenberg"
+  ],
+  "author": "WPPOOL",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.10",
+    "@wordpress/icons": "^1.1.0"
+  }
+}
