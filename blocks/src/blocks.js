@@ -30,7 +30,9 @@ registerBlockType('cta-gutenberg/cta', {
 		const {
 			uniqueId,
 			layout,
+			isGradientBg,
 			bgColor,
+			bgColor2,
 			bgImage,
 			title,
 			description,
@@ -43,7 +45,7 @@ registerBlockType('cta-gutenberg/cta', {
 				<div 
 					className={`call_to_action_${layout} call_to_action_${uniqueId}`}
 					style={{
-						backgroundImage:`url(${(bgImage.url != undefined) ? bgImage.url : cta_gutenberg_locate.plugin + 'assets/images/cta_1.png'})`
+						backgroundImage:`${(bgImage.url != undefined) ? `url(${bgImage.url})` : 'none'}`
 					}}
 				>
 					<div className="cta_content">
@@ -51,15 +53,26 @@ registerBlockType('cta-gutenberg/cta', {
 						<p>{description}</p>
 						<a className="ctagb-btn" target={btn_target ? '_blank': ''} rel="noopener noreferrer" href={btn_url}>{btn_label}</a>
 					</div>
-					{layout == 1 &&
-						<style>
-						{`
+					<style>
+					{(layout == 1 || layout == 8 || layout == 9) ?
+						
+						`
 						.call_to_action_${uniqueId}:after{
-							background-color: ${bgColor}
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor}, ${bgColor2})` : `background-color: ${bgColor}`}
 						}
-						`}
-						</style>
+						.call_to_action_${uniqueId}>.cta_content>.ctagb-btn:hover{
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor2}, ${bgColor})` : `background-color: ${bgColor}`}
+						}
+						`
+						:
+						
+						`.call_to_action_${uniqueId}{
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor}, ${bgColor2})` : `background-color: ${bgColor}`}
+						}
+						`
+						
 					}
+					</style>
 				</div>
 		);
 	}

@@ -31,7 +31,9 @@ class Edit extends Component{
 			attributes: {
 				uniqueId,
 				layout,
+				isGradientBg,
 				bgColor,
+				bgColor2,
 				bgImage,
 				title,
 				description,
@@ -51,7 +53,14 @@ class Edit extends Component{
 								{ value: 1, styleIcon: styleicons.cta_layout_1 },
 								{ value: 2, styleIcon: styleicons.cta_layout_2 },
 								{ value: 3, styleIcon: styleicons.cta_layout_3 },
-								{ value: 4, styleIcon: styleicons.cta_layout_4 }
+								{ value: 4, styleIcon: styleicons.cta_layout_4 },
+								{ value: 5, styleIcon: styleicons.cta_layout_5 },
+								{ value: 6, styleIcon: styleicons.cta_layout_6 },
+								{ value: 7, styleIcon: styleicons.cta_layout_7 },
+								{ value: 8, styleIcon: styleicons.cta_layout_8 },
+								{ value: 9, styleIcon: styleicons.cta_layout_9 },
+								{ value: 10, styleIcon: styleicons.cta_layout_10 },
+								{ value: 11, styleIcon: styleicons.cta_layout_11 }
 							]}
 						/>
 					</PanelBody>
@@ -68,6 +77,14 @@ class Edit extends Component{
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Wrapper" ) } initialOpen={ false }>
+						{(layout == 8 || layout == 9) &&
+							<ToggleControl
+								label={__('Enable Gradient')}
+								checked={ isGradientBg }
+								onChange={ (state) => setAttributes( { isGradientBg: state } ) }
+							/>
+						}
+						<span className="cta-field-label">{__('Background Color')}</span>
 						<ColorPalette
 							label={ __('Background Color') }
 							className="cta-field"
@@ -75,6 +92,18 @@ class Edit extends Component{
 							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 							allowReset
 						/>
+						{(isGradientBg == 1 && (layout == 8 || layout == 9)) &&
+							<Fragment>
+								<span className="cta-field-label">{__('Background Color 2')}</span>
+								<ColorPalette
+									label={ __('Background Color 2') }
+									className="cta-field"
+									value={ bgColor2 }
+									onChange={ ( colorValue ) => setAttributes( { bgColor2: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						}
 						<CtaMedia 
 							label={__('Image')} 
 							value={bgImage} 
@@ -85,7 +114,7 @@ class Edit extends Component{
 				<div 
 					className={`call_to_action_${layout} call_to_action_${uniqueId}`}
 					style={{
-						backgroundImage:`url(${(bgImage.url != undefined) ? bgImage.url : cta_gutenberg_locate.plugin + 'assets/images/cta_1.png'})`
+						backgroundImage:`${(bgImage.url != undefined) ? `url(${bgImage.url})` : 'none'}`
 					}}
 				>
 					<div className="cta_content">
@@ -110,15 +139,26 @@ class Edit extends Component{
 						/>
 					</div>
 				</div>
-				{layout == 1 &&
-					<style>
-					{`
-					.call_to_action_${uniqueId}:after{
-						background-color: ${bgColor}
+				<style>
+					{(layout == 1 || layout == 8 || layout == 9) ?
+						
+						`
+						.call_to_action_${uniqueId}:after{
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor}, ${bgColor2})` : `background-color: ${bgColor}`}
+						}
+						.call_to_action_${uniqueId}>.cta_content>.ctagb-btn:hover{
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor2}, ${bgColor})` : `background-color: ${bgColor}`}
+						}
+						`
+						:
+						
+						`.call_to_action_${uniqueId}{
+							${isGradientBg == 1 ? `background-image: linear-gradient(to right, ${bgColor}, ${bgColor2})` : `background-color: ${bgColor}`}
+						}
+						`
+						
 					}
-					`}
-					</style>
-				}
+				</style>
 			</Fragment>
 		);
 	}

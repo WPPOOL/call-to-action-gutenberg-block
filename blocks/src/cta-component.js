@@ -1,4 +1,5 @@
 const { Component } = wp.element;
+const { __ } = wp.i18n;
 const { MediaUpload } = wp.blockEditor;
 const { Dashicon } = wp.components;
 
@@ -10,6 +11,11 @@ class CtaMedia extends Component {
             onChange({ url: media.url, id: media.id, alt: media.alt });
         }
     }
+
+    removeImage() {
+        const { onChange } = this.props
+		onChange({})
+	}
     
     validateUrl(url) {
 		if (['wbm', 'jpg', 'jpeg', 'gif', 'png', 'svg'].indexOf(url.split('.').pop().toLowerCase()) != -1) {
@@ -32,13 +38,25 @@ class CtaMedia extends Component {
                         allowedTypes={['image']}
                         value={value}
                         render={({ open }) => (
-                            <div className="cta-single-img">
+                            <div>
                                 {(value && value.url) ? 
-                                    <span className="cta-media-image-parent" onClick={open}>
-                                        <img src={this.validateUrl(value.url)} alt={value.alt} />
-                                    </span>
+                                    <div>
+                                        <div className="cta-single-img">
+                                            <span className="cta-media-image-parent" onClick={open}>
+                                                <img src={this.validateUrl(value.url)} alt={value.alt} />
+                                            </span>
+                                        </div>
+                                        <div className="cta-media-actions cta-field-button-list">
+                                            <button className="cta-field-button" aria-label={__('Edit')} onClick={open} role="button">
+                                                <span aria-label={__('Edit')} className="dashicons dashicons-edit" />
+                                            </button>
+                                            <button className="cta-field-button" aria-label={__('Remove')} onClick={() => this.removeImage()} role="button">
+                                                <span aria-label={__('Close')} className="dashicons dashicons-no" />
+                                            </button>
+                                        </div>
+                                    </div>
                                     :
-                                    <div onClick={open} className={"cta-placeholder-image"}><Dashicon icon="format-image" /></div>
+                                    <div className="cta-single-img"><div onClick={open} className={"cta-placeholder-image"}><Dashicon icon="format-image" /></div></div>
                                 }
                             </div>
                         )}
