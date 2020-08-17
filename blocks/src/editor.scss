@@ -1,6 +1,9 @@
 /* *********************************************************************************** */
 /* Editor specific */
 /* *********************************************************************************** */
+.wp-block[data-type="cta-gutenberg/cta"]{
+    max-width: none;
+}
 div[data-type]{
     z-index: 1;
 }
@@ -332,8 +335,8 @@ div[data-type]{
                         float: right;
                         height: 10px;
                         width: 22px;
-                        background-color: white;
-                        border-radius: 3px;
+                        background-color: #E94D65;
+                        border-radius: 0px;
                         margin-top: 10px;
                     }
                 }
