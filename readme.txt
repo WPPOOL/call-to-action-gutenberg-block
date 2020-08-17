@@ -1,4 +1,4 @@
-=== Call to Action Gutenberg Block ===
+=== Call to Action Block - WPPOOL ===
 Contributors: wppool, azizultex, foysalremon
 Tags: call-to-action, gutenberg, block
 Requires at least: 5.0
@@ -11,7 +11,7 @@ Lisecse URL: http://www.gnu.org/licenses/gpl-2.0.txt
 Call to Action Gutenberg Block
 
 == Description ==
-A full feature gutenberg block plugin which have call to action block with extended customization support and great design. 
+A full feature gutenberg block plugin which have call to action block with extended customization support and great design. It currently have 10+ seperate call to action layout along with options for background color, image and gradient. 
 
 == How to Install? ==
 

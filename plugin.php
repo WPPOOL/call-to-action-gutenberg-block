@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Call to Action Gutenberg Block
+ * Plugin Name:       Call to Action Block - WPPOOL
  * Plugin URI:        https://block-cta.wppool.dev/
- * Description:       Call to action WordPress gutenberg block with extended customization
+ * Description:       Call to action WordPress gutenberg block with extended customization and flexible setting options
  * Version:           1.0.0
  * Author:            WPPOOL
  * Author URI:        https://wppool.dev
