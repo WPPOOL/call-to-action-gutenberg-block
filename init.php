@@ -120,7 +120,7 @@ if (! class_exists('CTAGutenberg')) {
          */
         public function i18n()
         {
-            wp_set_script_translations( 'cta-gutenberg-block', 'cta-gutenberg' );
+            wp_set_script_translations( 'cta-gutenberg-block', 'cta-gutenberg', plugin_dir_path( __FILE__ ) . 'languages' );
         }
 
         /**
