@@ -1,12 +1,17 @@
 <?php
-/*
-  Plugin Name: CTAGutenberg
-  Plugin URI: http://wppool.dev/cta-gutenberg
-  Description: Essential WordPress Gutenberg blocks with impressive design and functionalities
-  Version: 1.0
-  Author: WPPOOL
-  Author URI: http://wppool.dev
-
+/**
+ * Plugin Name:       Call to Action Gutenberg Block
+ * Plugin URI:        https://block-cta.wppool.dev/
+ * Description:       Call to action WordPress gutenberg block with extended customization
+ * Version:           1.0.0
+ * Author:            WPPOOL
+ * Author URI:        https://wppool.dev
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       cta-gutenberg
+ * Requires at least: 5.0
+ * Tested up to: 	  5.5
+ *
   * CTAGutenberg Blocks
   * @since CTAGutenberg 1.0
   * @package cta-gutenberg
